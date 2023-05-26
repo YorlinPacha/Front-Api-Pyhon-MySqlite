@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <title>City Weather</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" href="./css/entradas.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main id="app">
+    <!-- <img v-if="isLoading" src="images/spin.gif" alt="loading">
+    <img v-if="isError" src="images/error.png" alt="error"> -->
+    <!-- <div v-if="!isError && !isLoading" > -->
+    <div class="contenedor">
+      <h1>ADMIN</h1>
+      <div class="entradas">
+        <label>ID: <input type="text" v-model="id"></label>
+        <label>Nombre: <input type="text" v-model="name"></label>
+        <label>Temp: <input type="number" v-model="temperature"> ºC</label>
+        <label>Prob. lluvia: <input type="number" v-model="rain_probability"></label>
+        <button @click="CreateCity()">POST - Create ciudad</button>
+        <button @click="DeleteCity(id)">DEL - Delete ciudad</button>
+        <button @click="UpdateCity(id)">PUT - Update ciudad</button>
+        <hr>
+        <button @click="getAllCity">all city</button>
+        <hr>
+
+        <!-- ***********  bloque para la lista ******-->
+        <div>
+          
+          <div class="weather-summary" v-for="(city, index) in cities" :key="index">
+            <!--o <div v-else class="weather-summary"></div>   --> 
+                    <h2>Id: {{ city[0]}}</h2>
+                    <h2>Ciudad: {{ city[1]}}</h2>
+                     <img v-if="city[3] >= 0.5" src="./images/rain.png" alt="loading">
+                     <img v-if="city[3] < 0.5" src="./images/sunny.png" alt="loading">
+                    <!-- //Implementamos para integrar VUE (6) para modificar un atributo-->
+                    <h3>Temp: {{ city[2] }} ºC</h3>
+                    <h3>Lluvia: {{ city[3] }} ºC</h3>
+                  </div>
+                 
+                  <!-- <div v-for="(item, index) in cities" :key="index">
+                    {{ item }}
+                  </div> -->
+        </div>
+        <!-- *********************************-->
+      </div>
+      <a href="./index.html">Home</a>
+    </div>
+    <!-- <pre>
+      {{$data}}
+     </pre> -->
+  </main>
+  <script src="./admin.js"></script>
+</body>
